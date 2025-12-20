@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Postları</title>
+    <link rel="stylesheet" href="{% static 'css/posts.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Blog Postları</h1>
+            <p>Ən son paylaşımlarımız</p>
+            {% if posts %}
+                <div class="posts-count">
+                    Cəmi {{ posts|length }} məqalə
+                </div>
+            {% endif %}
+        </div>
+        
+        {% if posts %}
+            <div class="posts-grid">
+                {% for post in posts %}
+                    <div class="post-card">
+                        <div class="post-number">#{{ forloop.counter }}</div>
+                        
+                        <h2 class="post-title">{{ post.title }}</h2>
+                        
+                        <div class="post-content">
+                            {{ post.content|truncatechars:38 }}
+                        </div>
+                        
+                        <div class="post-stats">
+                            <span class="char-count">
+                                {{ post.content|length }} simvol
+                            </span>
+                            <a href="{% url 'blog:post_detail' post.pk %}" class="read-more">Daha çox oxu →</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
