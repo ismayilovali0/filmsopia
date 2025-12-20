@@ -1,16 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post
 
-def post(request):
-    posts = Post.objects.all()
-    latest_post = posts.order_by('-created_at').first()
-    context = {
-        'posts': posts,
-        'latest_post': latest_post
-    }
-    return render(request, 'post.html', context)
 def home_page(request):
-    context = {
-        'title': 'Mənim İlk Səhifəm'
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'home_page.html')
+
+def blog_page(request):
+    return render(request, 'blog_page.html')
+
+def posts_page(request):
+    return render(request, 'posts_page.html')
+
+def post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'post.html', {'slug': slug})

@@ -1,14 +1,9 @@
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin
 from django.urls import path
-from blog.views import post
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('post/<slug>/', post, name='post'),
+    path('', views.home_page, name='home_page'), 
+    path('blog/', views.blog_page, name='blog_page'),
+    path('posts/', views.posts_page, name='posts_page'),
+    path('post/<slug>/', views.post, name='post'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

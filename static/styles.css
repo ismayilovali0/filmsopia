@@ -1,5 +1,12 @@
+:root {
+    --primary-color: #212D40;  /* Floral White*/
+    --secondary-color: #5E6778; /* Bone*/
+    --accent-color: #252422; /*Eerie Black*/
+    --text-color: #c5c6c8;     /*Dark Charcoal*/
+    --triple-color: #7A5DB6; /*Princeton Orange*/
+}
 body {
-    background-color: #cf7a6dcd;
+    background: linear-gradient(72deg, #707378d1 -20%, var(--secondary-color) 60%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,7 +25,7 @@ body {
 }
 
 .box {
-    background-color: #d7aca4;
+    background: #2524223a;
     padding: 30px;  
     border-radius: 50px;
     height: 300px;
@@ -33,17 +40,39 @@ body {
 }
 
 h1{
-    color: white;
+    color: var(--text-color);
     margin: 10px 0;
     font-size: 30px;
 }
-
+h2{
+    color: var(--text-color);
+    margin: 10px 0;
+    font-size: 50px;
+}
 p{
-    color: white;
+    color: var(--text-color);
     font-size: 20px;
 }
 
 a {
     font-size: 50px;
     text-decoration: none;
+}
+.fruit-btn {
+    display: inline-block;   
+    text-decoration: none;    
+    padding: 15px 40px;       
+    font-size: 40px;          
+    
+    background: rgb(136, 3, 3);
+    
+    border-radius: 20px;      
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+    transition: all 0.3s ease; 
+}
+
+.fruit-btn:hover {
+    transform: scale(1.1);    
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    filter: brightness(1.1);  
 }
